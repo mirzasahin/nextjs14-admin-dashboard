@@ -41,6 +41,7 @@ const UsersPage = () => {
             </td>
             <td>Elly@gmail.com</td>
             <td>24.05.2024</td>
+            <td>Client</td>
             <td>Active</td>
             <td>
               <div className={styles.buttons}>
