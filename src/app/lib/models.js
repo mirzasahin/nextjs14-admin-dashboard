@@ -1,79 +1,81 @@
-import mongoose from 'mongoose'
-import {
-    Schema
-} from 'mongoose'
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     name: {
-        type: String,
-        unique: true,
-        required: true,
-        min: 3,
-        max: 20,
+      type: String,
+      unique: true,
+      required: true,
+      min: 3,
+      max: 20,
     },
     email: {
-        type: String,
-        unique: true,
-        required: true,
+      type: String,
+      unique: true,
+      required: true,
     },
     password: {
-        type: String,
-        unique: true,
+      type: String,
     },
     img: {
-        type: String,
+      type: String,
     },
     phone: {
-        type: String,
+      type: String,
     },
     address: {
-        type: String,
+      type: String,
     },
     isAdmin: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
     isActive: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-}, {
-    timestamps: true
-})
-
-const productSchema = new Schema({
+const productSchema = new Schema(
+  {
     title: {
-        type: number,
-        unique: true,
-        required: true,
+      type: String,
+      unique: true,
+      required: true,
     },
     desc: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     price: {
-        type: String,
-        required: true,
-        min: 0
+      type: String,
+      required: true,
+      min: 0,
     },
     stock: {
-        type: Number,
-        required: true,
-        min: 0
+      type: Number,
+      required: true,
+      min: 0,
     },
     img: {
-        type: String,
+      type: String,
     },
     color: {
-        type: String,
+      type: String,
     },
     size: {
-        type: String,
+      type: String,
     },
-}, {
-    timestamps: true
-})
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export const User = mongoose.models.User || mongoose.model("User", userSchema)
-export const Product = mongoose.models.Product || mongoose.model("Product", productSchema)
+export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
