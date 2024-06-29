@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       unique: true,
       required: true,
@@ -17,6 +17,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
+      required: true,
     },
     img: {
       type: String,
@@ -33,7 +34,7 @@ const userSchema = new Schema(
     },
     isActive: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {
