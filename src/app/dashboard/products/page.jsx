@@ -15,7 +15,7 @@ const ProductsPage = async ({searchParams}) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder="Search for a product..." />
-        <Link href="dashboard/products/add">
+        <Link href="/dashboard/products/add">
           <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
@@ -47,7 +47,7 @@ const ProductsPage = async ({searchParams}) => {
               </td>
               <td>{product.desc}</td>
               <td>${product.price}</td>
-              <td>{product?.createdAt?.toString().splice(4,16)}</td>
+              <td>{product?.createdAt?.toString().slice(4,16)}</td>
               <td>{product.stock}</td>
               <td>
                 <div className={styles.buttons}>
