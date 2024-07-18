@@ -1,20 +1,19 @@
 export const authConfig = {
-  providers:[],
   pages: {
     signIn: "/login", // If not authenticated redirect to login page
   },
   callbacks: {
-    authorized({auth, request}){
-        const isLoggedIn = auth?.user
-        const isOnDashboard = request.nextUrl.pathname.startsWith("/dashboard")
-        if (isOnDashboard) {
-            if (isLoggedIn) return true
-            return false
-        } else if (isLoggedIn){
-            return Response.redirect(new URL("/dashboard", request.nextUrl))
-        }
-        return true;
-        
-    }
-  }
-};
+    authorized({ auth, request }) {
+      const isLoggedIn = auth?.user;
+      const isOnDashboard = request.nextUrl.pathname.startsWith("/dashboard");
+      if (isOnDashboard) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL("/dashboard", request.nextUrl));
+      }
+      return true;
+    },
+  },
+  providers: [], // Add providers with an empty array for now
+}
