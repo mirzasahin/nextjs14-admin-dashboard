@@ -194,21 +194,19 @@ export const deleteProduct = async (formData) => {
         await Product.findByIdAndDelete(id)
 
     } catch (err) {
-        console.log(err);
         throw new Error("Failed to delete product!")
     }
     revalidatePath("/dashboard/products");
 }
 
-export const authenticate = async (formData) => {
+export const authenticate = async (prevState, formData) => {
     
     const {username, password} = Object.fromEntries(formData)
 
     try {
         await signIn("credentials", {username, password})
     } catch (err) {
-        console.log(err)
-        throw err
+        return "Wrong Credentials!";
     }
     
 }
